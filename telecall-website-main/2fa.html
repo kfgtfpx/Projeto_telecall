@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Autenticação 2FA</title>
+    <link rel="stylesheet" href="assets/css/complementar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Autenticação em Duas Etapas</h1>
+      <form action="2fa.php" method="POST">
+        <label for="codigo">Digite o código enviado:</label>
+        <input type="text" id="codigo" name="codigo" maxlength="6" required />
+        <button type="submit" class="btn">Confirmar</button>
+      </form>
+    </div>
+  </body>
+</html>

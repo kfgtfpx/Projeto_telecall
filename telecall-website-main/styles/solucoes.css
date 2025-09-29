@@ -1,0 +1,661 @@
+/* =====================================================================
+                           Autor original: Oscar
+                          Modificações por: Pamela
+  ! Modificações
+    - Refatoração do CSS 
+    - Melhoria de organização e estrutura
+    - Adição de variáveis CSS para cores e tamanhos de fonte
+    - Adição de Dark Mode e botões de acessibilidade
+    - Melhoria de responsividade
+    - Comentários
+   =====================================================================*/
+
+/* -------------------- ROOT VARIABLES -------------------- */
+
+:root {
+  --color-primary-1: #1941b7;
+  --color-primary-2: #930f1d;
+  --color-primary-3: #ce2536;
+  --color-primary-4: #e9f2ff;
+  --color-primary-5: #ffdfe3;
+  --color-primary-6: #3656b6;
+
+  --color-shadow-1: #1e20226e;
+  --color-shadow-2: #a3bef4;
+
+  --color-neutral-0: #fafafa;
+  --color-neutral-1: #d1cece;
+  --color-neutral-2: #111111;
+  --color-neutral-3: #2b2a2a;
+  --color-neutral-4: #504f4f;
+  --color-neutral-5: #6c6c6c;
+
+
+  --fs-xs: clamp(13px, 1.5vw, 15px);
+  --fs-sm: clamp(14px, 1.6vw, 16px);
+  --fs-md: clamp(16px, 1.8vw, 18px);
+  --fs-lg: clamp(22px, 2.5vw, 26px);
+  --fs-xl: clamp(36px, 4vw, 46px);
+  --fs-xxl: clamp(40px, 5vw, 52px);
+  --fs-xxxl: clamp(60px, 5.5vw, 82px);
+}
+
+.darkmode {
+  --color-primary-1: #1941b7;
+  --color-primary-2: #930f1d;
+  --color-primary-3: #ce2536;
+  --color-primary-4: #17263b;
+  --color-primary-5: #ffdfe3;
+  --color-primary-6: #3656b6;
+
+  --color-shadow-1: #000000ed;
+  --color-shadow-2: #3656b64a;
+
+  --color-neutral-0: #111111;
+  --color-neutral-1: #2b2a2a;
+  --color-neutral-2: #fafafa;
+  --color-neutral-3: #d1cece;
+  --color-neutral-4: #504f4f;
+  --color-neutral-5: #6c6c6c;
+}
+
+body.font-small {
+  --fs-xs: clamp(12px, 1.3vw, 13.5px);
+  --fs-sm: clamp(13px, 1.4vw, 14.5px);
+  --fs-md: clamp(14.5px, 1.6vw, 16px);
+  --fs-lg: clamp(20px, 2.2vw, 23.5px);
+  --fs-xl: clamp(32px, 3.6vw, 41px);
+  --fs-xxl: clamp(36px, 4.5vw, 47px);
+}
+
+body.font-normal {
+  --fs-xs: clamp(13px, 1.5vw, 15px);
+  --fs-sm: clamp(14px, 1.6vw, 16px);
+  --fs-md: clamp(16px, 1.8vw, 18px);
+  --fs-lg: clamp(22px, 2.5vw, 26px);
+  --fs-xl: clamp(36px, 4vw, 46px);
+  --fs-xxl: clamp(40px, 5vw, 52px);
+}
+
+body.font-large {
+  --fs-xs: clamp(14px, 1.7vw, 16.5px);
+  --fs-sm: clamp(15.5px, 1.8vw, 18px);
+  --fs-md: clamp(18px, 2vw, 20.5px);
+  --fs-lg: clamp(24.5px, 2.8vw, 29.5px);
+  --fs-xl: clamp(40px, 4.5vw, 52px);
+  --fs-xxl: clamp(44px, 5.5vw, 60px);
+}
+
+/* -------------------- IMPORT -------------------- */
+
+@font-face {
+  font-family: 'Cabin';
+  src: url(../assets/fonts/Cabin-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+  font-family: 'LibreFranklin';
+  src: url(../assets/fonts/LibreFranklin-VariableFont_wght.ttf);
+}
+
+/* -------------------- GLOBAL SETTINGS -------------------- */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Cabin';
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+}
+
+body {
+  background-color: var(--color-neutral-0); 
+  transition: ease 0.3s;
+}
+
+   /* ======= Textos ======= */
+
+.subtitulo-vermelho {
+  color: #e60023;
+  font-size: var(--fs-lg);
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.tittle-solucoes{
+  font-size: var(--fs-xl);
+  margin-bottom: 20px;
+  color: var(--color-neutral-3);
+  font-weight: 900;
+  font-family: 'LibreFranklin';
+  transition: ease 0.3s;
+}
+
+   /* ======= Cards ======= */
+
+   .passos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .passo {
+    background: var(--color-neutral-0);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px var(--color-shadow-1);
+    max-width: 320px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    transition: ease 0.3s;
+  }
+  
+  .card-content {
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+  }
+  
+  .card-content img {
+    width: 65px;
+    height: auto;
+    padding: 15px;
+    margin-left: 15px;
+    border-radius: 45%;
+    box-shadow:rgba(0, 0, 0, 0.148) 0px 3px 12px;
+  }
+  
+  .card-content p {
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+    margin: 0;
+    color: var(--color-neutral-2);
+    padding-top: 10px;
+    padding-right: 15px;
+    transition: ease 0.3s;
+  }
+
+/* -------------------- FUNDO AZUL -------------------- */
+
+#fundo-azul {
+  background-image: url('../assets/img/fundo-azul.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 200px 10px 200px; 
+  width: 100%;
+  margin-bottom: 200px;
+  position: relative;
+  color: #fafafa;
+  text-align: center;
+}
+
+#fundo-azul .conteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+#fundo-azul h1 {
+  font-size: var(--fs-xxxl);
+  font-weight: 500;
+  padding-bottom: 10px;
+  line-height: 1.2;
+}
+
+#fundo-azul p {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+}
+
+
+/* -------------------- AUTENTICAÇÃO EM DOIS FATORES -------------------- */
+
+#autenticacao {
+  padding: 60px 20px;
+  display: flex;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.conteudo-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.texto {
+  flex: 1;
+  min-width: 300px;
+  padding: 14px;
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  color: var(--color-neutral-3);
+  transition: ease 0.3s;
+}
+
+.beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.beneficios li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.beneficios li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #e60023;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: ease 0.3s;
+}
+
+.imagem {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.como-funciona {
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 140px;
+}
+
+#solucoes .passos {
+  margin-bottom: 100px;
+}
+/* -------------------- NUMERO MASCARA -------------------- */
+
+#numero-mascara {
+  padding: 60px 20px;
+  background-color: var(--color-primary-4);
+  border-radius: 50px;
+  transition: ease 0.3s;
+}
+
+#numero-mascara .conteudo-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.imagem {
+  flex: 2;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#numero-mascara .texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+#numero-mascara .beneficios h3 {
+  color: #e60023;
+  margin-bottom: 10px;
+}
+
+#numero-mascara .beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#numero-mascara .beneficios li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+#numero-mascara .beneficios li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #e60023;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+#numero-mascara .como-funciona {
+  margin-top: 60px;
+  text-align: center;
+}
+
+
+#numero-mascara {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container {
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+
+}
+
+/* -------------------- GOOGLE VERIFIED CALLS -------------------- */
+#google {
+  padding: 60px 20px;
+  display: flex;
+  margin-top: 100px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.conteudo-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.texto {
+  flex: 1;
+  min-width: 300px;
+  padding: 14px;
+  font-size: var(--fs-md);
+  line-height: 1.6;
+}
+
+.beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.beneficios li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.beneficios li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #e60023;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.imagem {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.imagem img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.como-funciona {
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 140px;
+}
+
+#solucoes .passos {
+  margin-bottom: 100px;
+}
+
+
+
+/* -------------------- SMS PROGRAMÁVEL -------------------- */
+#sms-programavel {
+  padding: 60px 20px;
+  background-color: var(--color-primary-4);
+  border-radius: 50px;
+  color: #222;
+  margin-bottom: 150px;
+  transition: ease 0.3s;
+}
+
+#sms-programavel .conteudo-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.imagem {
+  flex: 2;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sms-programavel .texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+#sms-programavel .beneficios h3 {
+  color: #e60023;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+#sms-programavel .beneficios ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sms-programavel .beneficios li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+#sms-programavel .beneficios li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #e60023;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+#sms-programavel .como-funciona {
+  margin-top: 60px;
+  text-align: center;
+}
+
+
+#sms-programavel {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* -------------------- CTA -------------------- */
+
+.botao-contratar:hover {
+  background-color: #f0f0f0;
+}
+
+.cta-container {
+  max-width: 900px;
+  margin: auto 100px 100px;
+  background-color: #a1121c; 
+  color: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-text {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+}
+
+.cta-subtext {
+  font-size: var(--fs-sm);
+  margin-top: 5px;
+  opacity: 0.9;
+}
+.cta-button {
+  background-color: transparent;
+  color: #fafafa;
+  border: 2px solid #fafafa;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #f3f3f3;
+  color: #111111;
+  transition: ease-in 0.3s;
+}
+
+/* -------------------- MEDIA QUERY -------------------- */
+  @media (max-width: 900px) {
+    .bloco {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .imagem-direita,
+    .imagem-esquerda {
+      margin-top: 20px;
+    }
+  
+    .icones-beneficios {
+      justify-content: center;
+    }
+  }
+
+  /* ======= 2FA ======= */
+  @media (max-width: 768px) {
+    .imagem {
+      max-width: 100%;
+    }
+  }
+  
+   /* ======= Cards ======= */
+
+  @media (max-width: 1050px) {
+    .passos {
+      grid-template-columns: repeat(1, 1fr); 
+      place-items: center;
+      padding: 0 5%;
+    }
+
+    .passo {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .card-content {
+      align-items: center;
+      text-align: center;
+      place-content: center;
+    }
+  
+  }
+
+    /* ======= Numero máscara ======= */
+    @media (max-width: 768px) {
+      #numero-mascara .conteudo-principal {
+        flex-direction: column;
+        justify-content: center;
+      }
+      #numero-mascara .imagem {
+        order: 2;
+        
+      }
+
+      #numero-mascara .texto{
+        order: 1;
+      }
+    }
+
+        /* ======= Sms programável ======= */
+        @media (max-width: 768px) {
+          #sms-programavel .conteudo-principal {
+            flex-direction: column;
+            align-items: center;
+          }
+          #sms-programavel .imagem {
+            order: 2;
+          }
+    
+          #sms-programavel .texto{
+            order: 1;
+          }
+        }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logs do Sistema</title>
+    <link rel="stylesheet" href="assets/css/complementar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Logs do Sistema</h1>
+
+      <form method="GET" action="logs.php">
+        <input
+          type="text"
+          name="filtro"
+          placeholder="Filtrar por usuário ou data..."
+        />
+        <button type="submit" class="btn">Filtrar</button>
+      </form>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>Ação</th>
+            <th>Data/Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>João</td>
+            <td>Login realizado</td>
+            <td>2025-09-28 18:00</td>
+          </tr>
+          <tr>
+            <td>Maria</td>
+            <td>Exclusão de usuário</td>
+            <td>2025-09-28 18:05</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,474 @@
+<!-- =====================================================================
+                           Autor original: Oscar
+                          Modificações por: Pamela
+  ! Modificações
+    - Reestruturação grande do HTML para melhor organização e semântica.
+    - Adição de imagens com decorativos
+    - Header e footer adicionados 
+    - Link para favicon e javascript
+   ===================================================================== -->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soluções</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/solucoes.css" />
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand me-auto" href="#hero">
+          <img
+            src="assets/icons/Logo branca.svg"
+            class="logo"
+            alt="Logo Telecall"
+          />
+        </a>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+              Painel de Navegação
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a
+                  class="nav-link mx-lg-2"
+                  aria-current="page"
+                  href="home.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="home.html#cpaas">Sobre</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link mx-lg-2 dropdown-toggle active"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Soluções
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#autenticacao">2FA</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#numero-mascara">Número Máscara</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#google"
+                      >Google Verified Calls</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#sms-programavel">SMS Programável</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="home.html#planos">Planos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="home.html#suporte">Suporte</a>
+              </li>
+              <div class="mobile-buttons mt-3">
+                <a
+                  class="btn-default-2 d-block mb-2"
+                  role="button"
+                  href="cadastro.html"
+                  >Cadastre-se</a
+                >
+                <a
+                  class="btn-default-1 d-block"
+                  role="button"
+                  href="login.html"
+                  >Entrar</a
+                >
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ui-tools">
+          <button class="darkmode-toggle" id="darkmode-toggle">
+            <img
+              src="assets/icons/icon-escuro.svg escuro.svg"
+              alt="Modo escuro"
+              id="darkmode-icon"
+            />
+          </button>
+          <button class="increase-font" id="increase-font">
+            <img
+              src="assets/icons/aumentar-letra.svg"
+              alt="Aumentar letras"
+            />
+          </button>
+          <button class="decrease-font" id="decrease-font">
+            <img
+              src="assets/icons/diminuir-letra.svg"
+              alt="diminuir letras"
+            />
+          </button>
+        </div>
+        <div class="sign-in-out desktop-buttons">
+          <a class="btn-default-2" role="button" href="cadastro.html"
+            >Cadastre-se</a
+          >
+          <a class="btn-default-1" role="button" href="login.html">Entrar</a>
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <!-- FIM HEADER -->
+
+  <section id="fundo-azul">
+    <div class="conteudo-fundo-azul">
+      <h1 class="h1-fundoAzul">Soluções CPaaS</h1>
+      <p class="p-fundoAzul">Automatize, escale e melhore a forma como sua empresa se conecta. As soluções CPaaS da Telecall integram recursos de comunicação diretamente nos seus sistemas.</p>
+  </div>
+  </section>
+
+  <section id="autenticacao">
+    <div class="container">
+      <h2 class="tittle-solucoes">Autenticação em dois fatores (2FA)</h2>
+      <div class="conteudo-principal">
+        <div class="texto">
+        <p>
+                 O 2FA (Two-Factor Authentication) adiciona uma camada extra de segurança ao exigir dois fatores distintos para verificar a identidade do usuário. Após inserir a senha, o usuário recebe um código único — por SMS, chamada de voz ou e-mail — que precisa ser validado para concluir o acesso.
+          </p>
+          <div class="beneficios">
+            <h3 class="subtitulo-vermelho">Benefícios</h3>
+            <ul>
+              <li>Reduz até 99% de ataques de phishing e fraudes.</li>
+              <li>Fácil implementação via API.</li>
+              <li>Multiuso: logins, pagamentos, trocas de senha.</li>
+              <li>Permite visualização de relatórios de uso.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="imagem">
+          <img src="assets/img/2fa.png" alt="Pessoa utilizando computador" />
+        </div>
+      </div>
+
+      <div class="como-funciona">
+        <h3 class="subtitulo-vermelho">Como funciona</h3>
+        <div class="passos">
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/user-round.svg" alt="Tentativa de login" />
+            <p>O usuário tenta login ou inicia uma ação sensível.</p>
+          </div>
+        </div>
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/asteras.svg" alt="Envio de código PIN" />
+            <p>Um código PIN (OTP) é enviado por SMS, voz ou e-mail.</p>
+          </div>
+        </div>
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/shield-check.svg" alt="Código verificado com sucesso" />
+            <p>A verificação só é concluída após o código ser inserido.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="numero-mascara">
+    <div class="container">
+      <div class="conteudo-principal">
+        <div class="imagem">
+          <img src="assets/img/numero-mascara.png" alt="Representação do número máscara" />
+        </div>
+        <div class="texto">
+          <h2 class="tittle-solucoes" >Número Máscara</h2>
+          <p>
+            A solução de Número Máscara permite que duas partes se comuniquem sem expor seus números reais. A Telecall oferece um sistema intermediário que atribui um número temporário e dinâmico, protegendo a identidade de clientes, atendentes, entregadores e motoristas.
+          </p>
+          <div class="beneficios">
+            <h3 class="subtitulo-vermelho">Benefícios</h3>
+            <ul>
+              <li>Protege a identidade das duas partes.</li>
+              <li>Evita assédio, exposição e uso indevido de dados.</li>
+              <li>Permite controle de tempo de chamada e auditoria.</li>
+              <li>Compatível com chamadas e SMS, com relatórios detalhados.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="como-funciona">
+        <h3 class="subtitulo-vermelho">Como funciona</h3>
+        <div class="passos">
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/user-round.svg" alt="Usuário inicia chamada" />
+            <p>O usuário faz a chamada ou envia SMS.</p>
+          </div>
+          </div>
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/eye-off.svg" alt="Número real ocultado" />
+            <p>A plataforma mascara o número real.</p>
+          </div>
+          </div>
+          <div class="passo">
+            <div class="card-content">
+            <img src="assets/icons/shield-check.svg" alt="Recebimento seguro" />
+            <p>A outra parte recebe o contato de forma segura e anônima.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="google">
+    <div class="container">
+      <h2 class="tittle-solucoes">Google Verified Calls</h2>
+      <div class="conteudo-principal">
+        <div class="texto">
+      <p>
+        Com o Google Verified Calls, suas ligações passam a ser exibidas de forma personalizada nos celulares Android. O nome da sua empresa, o logotipo e até o motivo da ligação aparecem na tela do cliente antes mesmo da chamada ser atendida.
+      </p>
+      <div class="beneficios">
+      <h3 class="subtitulo-vermelho">Benefícios</h3>
+      <ul>
+        <li>Aumenta a taxa de atendimento.</li>
+        <li>Gera confiança imediata na ligação.</li>
+        <li>Reduz ligações rejeitadas por parecerem spam.</li>
+        <li>Melhora a experiência do cliente e a imagem da empresa.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="imagem">
+    <img src="assets/img/google-verified-calls.png" alt="Mulher usando o celular ao telefone" />
+  </div>
+</div>
+
+    <div class="como-funciona">
+      <h3 class="subtitulo-vermelho">Como funciona</h3>
+      <div class="passos">
+        <div class="passo">
+          <div class="card-content">
+          <img src="assets/icons/phone-call.svg" alt="Empresa inicia ligação" />
+          <p>A empresa inicia a ligação via plataforma integrada.</p>
+        </div>
+        </div>
+        <div class="passo">
+          <div class="card-content">
+          <img src="assets/icons/monitor-cog.svg" alt="Validação de dados" />
+          <p>O sistema valida e anexa os dados da empresa.</p>
+        </div>
+        </div>
+        <div class="passo">
+          <div class="card-content">
+          <img src="assets/icons/Vector.svg" alt="Ligação verificada no celular" />
+          <p>O cliente visualiza a ligação como “verificada”.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section id="sms-programavel">
+    <div class="container">
+      <div class="conteudo-principal">
+
+        <div class="imagem">
+      <img src="assets/img/sms-programavel.png" alt="Celular com mensagem de SMS programável" />
+    </div>
+
+    <div class="texto">
+      <h2 class="tittle-solucoes">SMS Programável</h2>
+      <p>
+        O SMS Programável permite o envio automatizado e personalizado de mensagens de texto por meio de uma API simples. É ideal para empresas que precisam se comunicar de forma rápida, eficiente e com altíssima taxa de leitura.
+      </p>
+
+      <div class="beneficios">
+      <h3 class="subtitulo-vermelho">Benefícios</h3>
+      <ul class="beneficios">
+        <li>98% de taxa de abertura em poucos minutos.</li>
+        <li>Fácil integração com qualquer sistema.</li>
+        <li>Envio em massa com agendamento e resposta.</li>
+        <li>Relatórios detalhados de entrega e leitura.</li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+    <div class="como-funciona">
+      <h3 class="subtitulo-vermelho">Como funciona</h3>
+      <div class="passos">
+      <div class="passo">
+         <div class="card-content">
+          <img src="assets/icons/send.svg" alt="Envio pontual" />
+          <p>Sua aplicação dispara a mensagem</p>
+        </div>
+      </div>
+      <div class="passo">
+         <div class="card-content">
+          <img src="assets/icons/package-check.svg" alt="Resultados impulsionados" />
+          <p>A operadora entrega ao destinatário</p>
+        </div>
+      </div>
+      <div class="passo">
+         <div class="card-content">
+          <img src="assets/icons/Vector.svg" alt="Agilidade no contato" />
+          <p>O cliente recebe e interage</p>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-container">
+    <div>
+      <div class="cta-text">Pronto para dar o próximo passo?</div>
+      <div class="cta-subtext">Fale com nossa equipe e descubra a solução ideal para o seu negócio.</div>
+    </div>
+    <button class="cta-button">Cadastre-se</button>
+  </div>
+  
+      <!-- FOOTER -->
+      <footer>
+        <div class="container">
+          <div class="wrapper">
+            <div class="footer-widget">
+              <a href="home.html">
+                <img
+                  src="assets/icons/Logo branca.svg"
+                  alt="Logo"
+                  class="logo"
+                />
+              </a>
+              <p class="desc">
+                Conectando pessoas e empresas com tecnologia e confiança.
+              </p>
+              <ul class="socials">
+                <li>
+                  <a
+                    href="https://www.instagram.com/telecallbr/"
+                    target="_blank"
+                    title="Instagram oficial da Telecall"
+                  >
+                    <img
+                      src="assets/icons/Instagram.svg"
+                      alt="Instagram"
+                      class="social-icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/TelecallBr/?locale=pt_BR"
+                    target="_blank"
+                    title="Facebook oficial da Telecall"
+                  >
+                    <img
+                      src="assets/icons/Facebook.svg"
+                      alt="Facebook"
+                      class="social-icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/telecall/"
+                    target="_blank"
+                    title="Linkedin oficial da Telecall"
+                  >
+                    <img
+                      src="assets/icons/Linkedin.svg"
+                      alt="Linkedin"
+                      class="social-icon"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-widget">
+              <h6 class="widget-title">Links Rápidos</h6>
+              <ul class="links">
+                <li><a href="home.html#hero">Home</a></li>
+                <li><a href="home.html#cpaas">Quem somos</a></li>
+                <li><a href="solucoes.html">Serviços</a></li>
+                <li><a href="home.html#planos">Planos</a></li>
+                <li><a href="home.html#suporte">Contato</a></li>
+              </ul>
+            </div>
+            <div class="footer-widget">
+              <h6 class="widget-title">Institucional</h6>
+              <ul class="links">
+                <li><a href="#">Central de Suporte</a></li>
+                <li><a href="#">Carreiras</a></li>
+                <li><a href="#">Parcerias</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="copyright-wrapper">
+            <p class="copyright-text">
+              &copy; 2025
+              <a
+                href="https://www.telecall.com"
+                target="_blank"
+                class="terms-link"
+                >Telecall</a
+              >
+              Todos os direitos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
+      <!--FOOTER -->
+
+  <script src="js/lib/scrollreveal.min.js"></script>
+  <script src="js/solucoes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
