@@ -1,0 +1,94 @@
+body {
+  background-color: #f8f9fa;
+  font-family: "Libre Franklin", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.card-header {
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 12px 12px 0 0 !important;
+  text-align: center;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.pergunta-container {
+  margin-bottom: 20px;
+}
+
+.pergunta-titulo {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.pergunta-texto {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 5px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+input.form-control {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button.btn:hover {
+  background-color: #0b5ed7;
+}
+
+.alerta {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #0d6efd;
+}
