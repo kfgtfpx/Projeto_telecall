@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Erro</title>
+    <link rel="stylesheet" href="assets/css/complementar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ocorreu um erro ❌</h1>
+      <p id="mensagem-erro">Algo deu errado. Tente novamente.</p>
+      <a href="login.html" class="btn">Voltar ao Login</a>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("msg")) {
+        document.getElementById("mensagem-erro").innerText = params.get("msg");
+      }
+    </script>
+  </body>
+</html>

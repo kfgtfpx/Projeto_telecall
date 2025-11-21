@@ -1,0 +1,146 @@
+<!-- =====================================================================
+                           Autor original: Carolina e Juan
+                           Modificações por: Pamela e Renan
+  ! Modificações (Pamela)
+    - Reestruturação pequena HTML para melhor organização e semântica.
+    - Adição dos botões de acessubilidade
+    - Adição de botão de "Já tem uma conta?""
+    - Ícone da Telecall no topo
+
+  ! Modificações (Renan)
+    - Reestruturação média HTML para facilitar a responsividade. 
+   ===================================================================== -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="styles/cadastro.css" />
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="assets/icons/telecall-logo.png" alt="Logo" />
+      </div>
+      <div class="title">
+        <h1 id="h1">Crie uma Conta</h1>
+        <span
+          >Cadastre-se agora para aproveitar todos os benefícios da nossa
+          plataforma.</span
+        >
+      </div>
+      <div class="form">
+        <!-- Adicionado o atributo action e method -->
+        <form action="backend/Cadastro.php" method="POST" id="form">
+          <div class="input-group">
+            <div class="input-box1">
+              <label for="name">Nome completo</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                maxlength="80"
+                required
+              />
+            </div>
+            <div class="input-box1">
+              <label for="login">Login</label>
+              <input
+                id="login"
+                type="text"
+                name="login"
+                maxlength="6"
+                required
+              />
+            </div>
+            <div class="input-box1">
+              <label for="mothername">Nome materno</label>
+              <input
+                id="mothername"
+                type="text"
+                name="mothername"
+                maxlength="80"
+                required
+              />
+            </div>
+            <div class="input-box1">
+              <label for="email">E-mail</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                maxlength="80"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-box2">
+              <label for="data">Data de Nascimento</label>
+              <input id="data" type="date" name="data" required />
+            </div>
+            <div class="input-box2">
+              <label for="select">Sexo</label>
+              <select id="select" name="select" required>
+                <option value="">Selecione</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div class="input-box2">
+              <label for="cpf">CPF</label>
+              <input id="cpf" type="text" name="cpf" maxlength="14" required />
+            </div>
+            <div class="input-box2">
+              <label for="address">CEP</label>
+              <input
+                id="address"
+                type="text"
+                name="address"
+                maxlength="9"
+                required
+              />
+            </div>
+            <div class="input-box2">
+              <label for="endereco">Endereço completo</label>
+              <input id="endereco" type="text" name="endereco" required />
+            </div>
+            <div class="input-box2">
+              <label for="cel">Telefone/Celular</label>
+              <input id="cel" type="tel" name="cel" maxlength="14" required />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-box4">
+              <label for="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                maxlength="8"
+                required
+              />
+            </div>
+            <div class="input-box5">
+              <label for="confirmpassword">Confirmar senha</label>
+              <input
+                id="confirmpassword"
+                type="password"
+                name="confirmpassword"
+                maxlength="8"
+                required
+              />
+            </div>
+          </div>
+          <div class="continue-button">
+            <button type="submit">Cadastre-se</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

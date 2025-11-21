@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consulta de Usuários</title>
+    <link rel="stylesheet" href="styles\complementar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Consulta de Usuários</h1>
+
+      <form method="GET" action="/backend/consulta.php" id="consulta">
+        <input type="text" name="busca" placeholder="Buscar usuário..." />
+        <button type="submit" class="btn">Pesquisar</button>
+      </form>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Perfil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Usuários serão carregados dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

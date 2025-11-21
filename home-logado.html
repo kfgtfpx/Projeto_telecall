@@ -1,0 +1,846 @@
+ <!-- =====================================================================
+                              
+                            Autor original: Pamela
+    
+=====================================================================   -->
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Logado</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/home-logado.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand me-auto" href="#hero">
+            <img
+              src="assets/icons/Logo branca.svg"
+              class="logo"
+              alt="Logo Telecall"
+            />
+          </a>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                Painel de Navegação
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+
+                <div class="user-area-mobile mt-3">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link mx-lg-2 dropdown-toggle"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" alt="Foto de perfil" class="profile-icon" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                      <path fill-rule="evenodd"  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                    
+                    <span class="username">Nome Sobrenome</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <button class="dropdown-item logout-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="exit-icon" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+                          <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                        </svg>
+                        <span class="logout-text">Sair</span>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+              </div>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link mx-lg-2 active"
+                    aria-current="page"
+                    href="#hero"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="#cpaas">Sobre</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link mx-lg-2 dropdown-toggle"
+                    href="#solucoes"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Soluções
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">2FA</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Número Máscara</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Google Verified Calls</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">SMS Programável</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="#planos">Planos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="#suporte">Suporte</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ui-tools">
+            <button class="darkmode-toggle" id="darkmode-toggle">
+              <img
+                src="assets/icons/icon-escuro.svg escuro.svg"
+                alt="Modo escuro"
+                id="darkmode-icon"
+              />
+            </button>
+            <button class="increase-font" id="increase-font">
+              <img
+                src="assets/icons/aumentar-letra.svg"
+                alt="Aumentar letras"
+              />
+            </button>
+            <button class="decrease-font" id="decrease-font">
+              <img
+                src="assets/icons/diminuir-letra.svg"
+                alt="diminuir letras"
+              />
+            </button>
+          </div>
+          <div class="user-area-desktop">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link mx-lg-2 dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" alt="Foto de perfil" class="profile-icon" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd"  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+                  
+                  <span class="username"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item logout-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="exit-icon" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                      </svg>
+                      <span class="logout-text">Sair</span>
+                    </button>
+                  </li>
+                </ul>
+              </li>
+            </div>
+
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- FIM HEADER -->
+
+    <div id="logout-popup" class="popup-overlay hidden">
+      <div class="popup-content">
+        <p>Deseja realmente sair?</p>
+        <div class="popup-buttons">
+        <button id="confirm-logout">Sim</button>
+        <button id="cancel-logout">Cancelar</button>
+      </div>
+      </div>
+    </div>
+
+    <section id="hero">
+      <div class="container hero-container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-6 text-center text-md-start">
+            <div class="hero-left">
+              <span>
+                Soluções CPaaS da Telecall para transformar a experiência do seu
+                cliente.</span
+              >
+              <h1>Conecte sua empresa ao futuro da comunicação</h1>
+              <p>
+                Automatize atendimentos, aumente a segurança e leve mais
+                eficiência para sua empresa com tecnologias de comunicação em
+                tempo real. Descubra o poder das APIs da Telecall.
+              </p>
+              <div class="hero-buttons">
+                <a href="cadastro.html" class="btn-start-now">Comece agora</a>
+                <a href="login.html" class="btn-signin">Entrar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="hero-right">
+              <img
+                src="assets/img/hero-phone.svg"
+                alt="Imagem de celular"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="carrousel">
+      <div class="carrousel-area">
+        <div class="container empresas text-center">
+          <h2>Empresas parceiras:</h2>
+          <div class="wrapper">
+            <div class="logo-track">
+              <!-- Primeira sequência -->
+              <img
+                src="assets/icons/logo-facebook.png"
+                alt="Logo facebook"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-bradesco.png"
+                alt="Logo Bradesco"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-instagram.png"
+                alt="Logo instagram"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-amazon.png"
+                alt="Logo Amazon"
+                class="logo-line"
+                id="logo-amazon"
+              />
+              <img
+                src="assets/icons/logo-whatsapp.png"
+                alt="Logo whatsapp"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-airnbnb.png"
+                alt="Airbnb"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-uber.png"
+                id="logo-uber"
+                alt="Uber"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-applestore.png"
+                alt="Logo applestore"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-amil.png"
+                alt="Logo amil"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-ifood.png"
+                alt="Logo ifood"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-picpay.png"
+                alt="Logo picpay"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-globoplay.png"
+                alt="Logo globoplay"
+                class="logo-line"
+              />
+
+              <!-- Segunda sequência duplicada -->
+              <img
+                src="assets/icons/logo-facebook.png"
+                alt="Logo facebook"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-bradesco.png"
+                alt="Logo Bradesco"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-instagram.png"
+                alt="Logo instagram"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-amazon.png"
+                alt="Logo Amazon"
+                class="logo-line"
+                id="logo-amazon"
+              />
+              <img
+                src="assets/icons/logo-whatsapp.png"
+                alt="Logo whatsapp"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-airnbnb.png"
+                alt="Airbnb"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-uber.png"
+                alt="Uber"
+                id="logo-uber"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-applestore.png"
+                alt="Logo applestore"
+                class="logo-circle"
+              />
+              <img
+                src="assets/icons/logo-amil.png"
+                alt="Logo amil"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-ifood.png"
+                alt="Logo ifood"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-picpay.png"
+                alt="Logo picpay"
+                class="logo-line"
+              />
+              <img
+                src="assets/icons/logo-globoplay.png"
+                alt="Logo globoplay"
+                class="logo-line"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cpaas">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 img-fluid text-center order-2 order-md-1">
+            <img
+              src="assets/img/cpaas-woman.png"
+              alt="Mulher com celular"
+              class="cpaas-img"
+            />
+          </div>
+          <div class="col-12 col-md-6 order-1 order-md-2">
+            <div class="cpaas-right">
+              <h2>Sobre a CPaaS</h2>
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
+                O que é
+              </h3>
+              <p>
+                O CPaaS (Communication Platform as a Service) — uma plataforma
+                que permite integrar recursos como SMS, chamadas de voz, vídeo e
+                mensagens instantâneas diretamente em sites, sistemas e
+                aplicativos, tudo por meio de APIs simples e flexíveis.
+              </p>
+
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
+                Por que escolher o CPaaS da Telecall
+              </h3>
+              <p>
+                A solução CPaaS da Telecall foi criada para tornar a comunicação
+                empresarial mais rápida, segura, escalável e personalizada,
+                ideal para empresas que buscam melhorar o relacionamento com
+                clientes, automatizar processos e reduzir custos operacionais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucoes">
+      <div class="container">
+        <h2 class="title text-center">Explore nossas soluções</h2>
+        <div class="text-area">
+          <p class="text text-center">
+            Descubra soluções inteligentes de comunicação que conectam sua
+            empresa aos seus clientes de forma mais rápida, integrada e
+            eficiente.
+          </p>
+        </div>
+        <div class="card-wrapper">
+          <div class="card">
+            <div class="icon-title">
+              <img
+                src="assets/icons/lock-card.png"
+                class="card-img-left"
+                alt="Ícone de cadeado"
+              />
+              <h5 class="card-title">Autentificação de dois fatores</h5>
+            </div>
+
+            <div class="card-body">
+              <div class="card-text">
+                <p>
+                  Adicione uma camada extra de segurança nas ações dos usuários.
+                  A verificação em dois passos protege contas e evita fraudes
+                  com rapidez e eficiência.
+                </p>
+              </div>
+              <div class="solutions-link">
+                <a href="#">
+                  Veja mais detalhes
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      fill="currentColor"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon-title">
+              <img
+                src="assets/icons/phone-card.png"
+                class="card-img-left"
+                alt="Ícone de telefone"
+              />
+              <h5 class="card-title">Número máscara</h5>
+            </div>
+
+            <div class="card-body">
+              <div class="card-text">
+                <p>
+                  Garanta a privacidade entre cliente e atendente usando números
+                  intermediários. Eles evitam exposição de dados e tornam
+                  comunicações temporárias mais seguras.
+                </p>
+              </div>
+              <div class="solutions-link">
+                <a href="#">
+                  Veja mais detalhes
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      fill="currentColor"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon-title">
+              <img
+                src="assets/icons/check-card.png"
+                class="card-img-left"
+                alt="Icone de verificação"
+              />
+              <h5 class="card-title">Google Verified Calls</h5>
+            </div>
+
+            <div class="card-body">
+              <div class="card-text">
+                <p>
+                  Mostre nome da empresa, logotipo e motivo da chamada na tela
+                  do cliente. Aumente a taxa de resposta e gere mais confiança
+                  nas suas ligações.
+                </p>
+              </div>
+              <div class="solutions-link">
+                <a href="#">
+                  Veja mais detalhes
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      fill="currentColor"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="icon-title">
+              <img
+                src="assets/icons/message-card.png"
+                class="card-img-left"
+                alt="Ícone de mensagem"
+              />
+              <h5 class="card-title">SMS Programável</h5>
+            </div>
+
+            <div class="card-body">
+              <div class="card-text">
+                <p>
+                  Permita que os clientes iniciem chamadas com um clique, direto
+                  do seu site ou app. Mais agilidade no suporte e mais
+                  conversões para o seu negócio.
+                </p>
+              </div>
+              <div class="solutions-link">
+                <a href="#">
+                  Veja mais detalhes
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      fill="currentColor"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos">
+      <div class="container">
+        <h3 class="title">Escolha o melhor plano para você</h3>
+        <p>
+          Escolha entre assinaturas mensais, ideais para quem busca
+          flexibilidade e controle, ou o plano corporativo, perfeito para
+          empresas que precisam de soluções completas, personalizadas e com
+          benefícios exclusivos.
+        </p>
+        <div class="group-buttons">
+          <button
+            type="button"
+            class="btn-mensal"
+            title="Este botão é ilustrativo."
+          >
+            Assinaturas mensais
+          </button>
+          <button
+            type="button"
+            class="btn-plan"
+            title="Este botão é ilustrativo."
+          >
+            Plano corporativo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="suporte">
+      <div class="container">
+        <h2 class="title text-center">Entre em contato</h2>
+        <div class="row align-items-start gx-5">
+          <div class="col-12 col-md-6 text-md-start">
+            <div class="left-suporte">
+              <h3 class="title-suporte">Fale Conosco</h3>
+              <form action="" class="form-suporte">
+                <label for="fname">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fname"
+                  name="fname"
+                />
+
+                <label for="fempresa">Empresa</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fempresa"
+                  name="fempresa"
+                />
+
+                <label for="femail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="femail"
+                  name="femail"
+                />
+
+                <label for="fmensagem">Mensagem</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fmensagem"
+                  name="fmensagem"
+                />
+
+                <button
+                  type="submit"
+                  class="form-button"
+                  title="Este botão é ilustrativo."
+                  disabled
+                >
+                  Enviar mensagem
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 text-md-start">
+            <div class="right-suporte">
+              <div class="info-container">
+                <h3 class="title-suporte" id="title-contato">
+                  Formas de contato
+                </h3>
+                <p>
+                  Tem alguma dúvida, precisa de ajuda ou quer saber mais sobre
+                  nossos serviços? Nossa equipe está pronta para te atender!
+                </p>
+
+                <div class="info-area">
+                  <div class="info-item">
+                    <img
+                      src="assets/icons/phone.png"
+                      alt="Telefone"
+                      class="info-icon"
+                    />
+                    <span>+55 11 1234-5678</span>
+                  </div>
+
+                  <div class="info-item">
+                    <img
+                      src="assets/icons/email.png"
+                      alt="Email"
+                      class="info-icon"
+                    />
+                    <span> suporte@telecall.com </span>
+                  </div>
+
+                  <div class="info-item">
+                    <img
+                      src="assets/icons/clock.png"
+                      alt="Relógio"
+                      class="info-icon"
+                    />
+                    <span>Segunda a sexta, das 9h às 18h</span>
+                  </div>
+
+                  <div class="location-info">
+                    <h3 class="title-suporte">Escritório</h3>
+                    <h4>Brasil</h4>
+                    <p>
+                      Centro empresarial Mario Henrique Simonsen Av. das
+                      Américas, 3434 | Bloco 5 – LJ 101 a 104 Barra da Tijuca |
+                      Rio de Janeiro, RJ – 22640-102
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="wrapper">
+          <div class="footer-widget">
+            <a href="home.html">
+              <img
+                src="assets/icons/Logo branca.svg"
+                alt="Logo"
+                class="logo"
+              />
+            </a>
+            <p class="desc">
+              Conectando pessoas e empresas com tecnologia e confiança.
+            </p>
+            <ul class="socials">
+              <li>
+                <a
+                  href="https://www.instagram.com/telecallbr/"
+                  target="_blank"
+                  title="Instagram oficial da Telecall"
+                >
+                  <img
+                    src="assets/icons/Instagram.svg"
+                    alt="Instagram"
+                    class="social-icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/TelecallBr/?locale=pt_BR"
+                  target="_blank"
+                  title="Facebook oficial da Telecall"
+                >
+                  <img
+                    src="assets/icons/Facebook.svg"
+                    alt="Facebook"
+                    class="social-icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/telecall/"
+                  target="_blank"
+                  title="Linkedin oficial da Telecall"
+                >
+                  <img
+                    src="assets/icons/Linkedin.svg"
+                    alt="Linkedin"
+                    class="social-icon"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-widget">
+            <h6 class="widget-title">Links Rápidos</h6>
+            <ul class="links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#cpaas">Quem somos</a></li>
+              <li><a href="#">Serviços</a></li>
+              <li><a href="#">Planos</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-widget">
+            <h6 class="widget-title">Institucional</h6>
+            <ul class="links">
+              <li><a href="#">Central de Suporte</a></li>
+              <li><a href="#">Carreiras</a></li>
+              <li><a href="#">Parcerias</a></li>
+              <li><a href="#">Política de Privacidade</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright-wrapper">
+          <p class="copyright-text">
+            &copy; 2025
+            <a
+              href="https://www.telecall.com"
+              target="_blank"
+              class="terms-link"
+              >Telecall</a
+            >
+            Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER -->
+
+    <script src="js/lib/scrollreveal.min.js"></script>
+    <script src="js/home-logado.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

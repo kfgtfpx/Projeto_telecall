@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logs de Autenticação</title>
+    <link rel="stylesheet" href="styles\log.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Logs de Autenticação</h2>
+
+      <!-- FILTRO -->
+      <div class="filter-box">
+        <select id="filterType">
+          <option value="all">Todos</option>
+          <option value="nome">Nome do Usuário</option>
+          <option value="cpf">CPF</option>
+        </select>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Digite para buscar..."
+        />
+
+        <button onclick="applyFilter()">Buscar</button>
+      </div>
+
+      <!-- TABELA DE LOGS -->
+      <table id="logsTable">
+        <thead>
+          <tr>
+            <th>Data & Hora</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Segundo Fator</th>
+          </tr>
+        </thead>
+        <tbody id="logsBody">
+          <!-- Os logs serão inseridos via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="js\log.js"></script>
+  </body>
+</html>
