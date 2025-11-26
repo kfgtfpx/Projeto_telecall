@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/11/2025 às 15:57
+-- Tempo de geração: 26/11/2025 às 22:42
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -141,7 +141,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `perfil_id`, `nome_completo`, `data_nascimento`, `sexo`, `nome_materno`, `cpf`, `email`, `telefone`, `cep`, `endereco`, `login`, `senha`, `criado_em`, `atualizado_em`) VALUES
-(28, 2, 'Renan Oliveira', '1111-11-11', 'M', 'SHIRLEI OTAVIANO DE OLIVEIRA', '11111111111', 'aaaaaaaaaa@gmail.com', '2121321312', '', 'Rua Vera, Cordovil, Rio de Janeiro, RJ', 'cccccc', '$2y$10$9wAdYea5UyMCPnU5Eq8R2.MWjC9IbMOP9.Jx7VUwOewXDxbRYYsbS', '2025-11-26 14:55:28', '2025-11-26 14:55:28');
+(29, 2, 'Renan Oliveira', '1111-11-11', 'F', 'SHIRLEI OTAVIANO DE OLIVEIRA', '11111111111', 'aaaaaaaaaa@gmail.com', '2121321312', '', 'Rua Vera, Cordovil, Rio de Janeiro, RJ', 'cccccc', '$2y$10$VCA60PIQt46leWOkGs9hCOHtoc9NDZVifkbD0ae/WzyYbYhoH.UmW', '2025-11-26 15:53:05', '2025-11-26 21:39:08'),
+(30, 1, 'Administrador Master', '1990-01-01', 'M', 'Nome da Mãe', '00000000000', 'admin@site.com', '21999999999', '00000000', 'Endereço do Admin', 'master', '$2b$12$7782zAjsOgA67aPwWAhQk.eMLlmAQbMw7t3GX4oxmLVSfakHonOqG', '2025-11-26 17:20:07', '2025-11-26 17:20:07');
 
 --
 -- Índices para tabelas despejadas
@@ -242,7 +243,7 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restrições para tabelas despejadas
