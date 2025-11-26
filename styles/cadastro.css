@@ -552,3 +552,10 @@ label {
   font-weight: 500;
   line-height: 1.2;
 }
+
+.error-msg {
+  color: #c20000;
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}

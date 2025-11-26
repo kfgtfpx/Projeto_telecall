@@ -1,21 +1,13 @@
 /* =====================================================================
                         Autor original: Renan
                         Modificações por: Pamela e ajustes finais GPT
-
-  ! Modificações:
-    - Adição de animações na página
-    - Script do darkmode
-    - Script dos botões de acessibilidade
-    - Correção de alguns bugs na validação
-    - Redirecionamento para tela 2FA
-    - Feedback visual de sucesso no login
-    - Bloqueio de botão durante redirecionamento
-
 ===================================================================== */
 
 /* ========================================
    Scroll Animation
    ======================================== */
+ console.log("LOGIN.JS CARREGOU!");
+
 
 ScrollReveal().reveal("#login-title", {
   origin: "bottom",
@@ -132,67 +124,95 @@ document.addEventListener("DOMContentLoaded", function () {
     const isPassword = password.type === "password";
     password.type = isPassword ? "text" : "password";
     togglePassword.src = isPassword
-      ? "../assets/icons/Olho fechado.svg"
-      : "../assets/icons/Olho aberto.svg";
+      ? "../assets/icons/Olho aberto.svg"
+      : "../assets/icons/Olho fechado.svg";
   });
 
-  // Exibir mensagem de erro
-  function showError(msg) {
-    let errorDiv = document.getElementById("login-error");
-    if (!errorDiv) {
-      errorDiv = document.createElement("div");
-      errorDiv.id = "login-error";
-      errorDiv.className = "alert alert-danger mt-2";
-      form.prepend(errorDiv);
+  // 🔥🔴 **AQUI VOCÊ ADICIONA A FUNÇÃO DO TOAST** 🔴🔥
+  function showToast(message, type = 'error') {
+    const config = {
+        text: message,
+        duration: 4000,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+    };
+    
+    if (type === 'error') {
+        config.style = {
+            background: "linear-gradient(to right, #dc3545, #c82333)",
+            color: "white",
+            borderRadius: "8px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            fontSize: "14px",
+            fontWeight: "500"
+        };
+    } else if (type === 'success') {
+        config.style = {
+            background: "linear-gradient(to right, #28a745, #218838)",
+            color: "white",
+            borderRadius: "8px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            fontSize: "14px",
+            fontWeight: "500"
+        };
     }
-    errorDiv.textContent = msg;
+    
+    Toastify(config).showToast();
   }
 
-  // Validação de login
+  // 🔥🔴 **AQUI VOCÊ SUBSTITUI A VALIDAÇÃO ANTIGA** 🔴🔥
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-
-    const oldError = document.getElementById("login-error");
-    if (oldError) oldError.remove();
 
     const loginValue = login.value.trim();
     const loginPassword = password.value.trim();
 
+    // Validação básica de campos vazios
     if (!loginValue || !loginPassword) {
-      showError("Preencha todos os campos.");
+      showToast("Preencha login e senha.", "error");
       return;
     }
 
-    const userData = localStorage.getItem(loginValue);
-    if (!userData) {
-      showError("Login não cadastrado.");
-      return;
-    }
+    // Enviar dados para PHP
+    const formData = new FormData();
+    formData.append("login", loginValue);
+    formData.append("senha", loginPassword);
 
-    const user = JSON.parse(userData);
-
-    if (user.password !== loginPassword) {
-      showError("Senha incorreta.");
-      return;
-    }
-
-    // Login válido — salvar e redirecionar para 2FA
-    localStorage.setItem("usuarioLogado", user.nome);
-
-    // Feedback visual de sucesso
-    const successDiv = document.createElement("div");
-    successDiv.className = "alert alert-success mt-3";
-    successDiv.textContent = "Login realizado com sucesso! Redirecionando...";
-    form.prepend(successDiv);
-
-    // Bloquear botão para evitar cliques múltiplos
+    // Feedback visual de carregamento
     const btnEntrar = form.querySelector("button[type='submit']");
-    if (btnEntrar) btnEntrar.disabled = true;
+    const originalText = btnEntrar.textContent;
+    btnEntrar.disabled = true;
+    btnEntrar.textContent = "Entrando...";
 
-    // Redirecionar para verificação 2FA
-    setTimeout(() => {
-      window.location.href = "../2fa.html";
-    }, 1500);
+    fetch("backend/Login.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          // Login bem-sucedido
+          showToast(data.message, "success");
+           localStorage.setItem("usuarioLogado", loginValue);
+           localStorage.setItem("user_id", data.user_id);
+           localStorage.setItem("perfil_id", data.perfil_id);
+          setTimeout(() => {
+            window.location.href = data.redirect;
+          }, 1500);
+        } else if (data.status === "error") {
+          // Erro no login
+          showToast(data.message, "error");
+          btnEntrar.disabled = false;
+          btnEntrar.textContent = originalText;
+        }
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+        showToast("Erro de conexão. Tente novamente.", "error");
+        btnEntrar.disabled = false;
+        btnEntrar.textContent = originalText;
+      });
   });
 
   // Botão voltar

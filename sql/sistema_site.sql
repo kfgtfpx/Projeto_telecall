@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/11/2025 às 01:11
+-- Tempo de geração: 26/11/2025 às 15:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -130,11 +130,18 @@ CREATE TABLE `usuarios` (
   `telefone` varchar(20) NOT NULL,
   `cep` char(8) NOT NULL,
   `endereco` varchar(200) NOT NULL,
-  `login` char(6) NOT NULL,
+  `login` varchar(6) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
   `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `perfil_id`, `nome_completo`, `data_nascimento`, `sexo`, `nome_materno`, `cpf`, `email`, `telefone`, `cep`, `endereco`, `login`, `senha`, `criado_em`, `atualizado_em`) VALUES
+(28, 2, 'Renan Oliveira', '1111-11-11', 'M', 'SHIRLEI OTAVIANO DE OLIVEIRA', '11111111111', 'aaaaaaaaaa@gmail.com', '2121321312', '', 'Rua Vera, Cordovil, Rio de Janeiro, RJ', 'cccccc', '$2y$10$9wAdYea5UyMCPnU5Eq8R2.MWjC9IbMOP9.Jx7VUwOewXDxbRYYsbS', '2025-11-26 14:55:28', '2025-11-26 14:55:28');
 
 --
 -- Índices para tabelas despejadas
@@ -235,7 +242,7 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restrições para tabelas despejadas

@@ -1,65 +1,78 @@
-/* ============================================================
-   Verificação de Duas Etapas (2FA)
-   Autor: Renan + integração para pré-projeto
-============================================================ */
-
 document.addEventListener("DOMContentLoaded", () => {
-  const perguntaEl = document.querySelector(".pergunta-texto");
-  const form = document.getElementById("form2fa");
-  const respostaInput = document.getElementById("resposta");
-  const mensagem = document.getElementById("mensagem");
 
-  let tentativas = 0;
+    const perguntaEl = document.getElementById("pergunta-texto");
+    const form = document.getElementById("form2fa");
+    const respostaInput = document.getElementById("resposta");
+    const mensagem = document.getElementById("mensagem");
 
-  // Simulação de dados cadastrados (substitui banco de dados)
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosUsuario = JSON.parse(localStorage.getItem(usuarioLogado)) || {
-    mae: "Maria da Silva",
-    nascimento: "2000-05-15",
-    cep: "12345-678"
-  };
+    let tentativas = 0;
 
-  // Gera pergunta aleatória
-  const perguntas = [
-    { texto: "Digite o nome de sua mãe", chave: "mae" },
-    { texto: "Digite a data do seu nascimento", chave: "nascimento" },
-    { texto: "Digite o CEP do seu endereço", chave: "cep" }
-  ];
-  const perguntaEscolhida = perguntas[Math.floor(Math.random() * perguntas.length)];
-  perguntaEl.textContent = perguntaEscolhida.texto;
+    const user_id = localStorage.getItem("user_id");
+    const login = localStorage.getItem("usuarioLogado");
 
-  // Submissão do formulário
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const resposta = respostaInput.value.trim();
-
-    // Validação 1 – campo obrigatório
-    if (!resposta) {
-      mensagem.innerHTML = `<div class="alert alert-danger">Por favor, preencha a resposta.</div>`;
-      return;
+    if (!user_id || !login) {
+        window.location.href = "login.html";
+        return;
     }
 
-    // Verificação de resposta
-    const respostaCerta = String(dadosUsuario[perguntaEscolhida.chave]).trim().toLowerCase();
-    const respostaUser = resposta.toLowerCase();
+    // Perguntas disponíveis
+    const perguntas = [
+        { texto: "Qual o nome da sua mãe?", chave: "mae" },
+        { texto: "Qual a data do seu nascimento?", chave: "nascimento" },
+        { texto: "Qual o CEP do seu endereço?", chave: "cep" }
+    ];
 
-    if (respostaUser === respostaCerta) {
-      mensagem.innerHTML = `<div class="alert alert-success">Verificação concluída com sucesso! Redirecionando...</div>`;
-      setTimeout(() => {
-        window.location.href = "../home-logado.html";
-      }, 1500);
-    } else {
-      tentativas++;
-      if (tentativas >= 3) {
-        mensagem.innerHTML = `<div class="alert alert-danger">3 tentativas sem sucesso! Favor realizar login novamente.</div>`;
-        setTimeout(() => {
-          window.location.href = "../login.html";
-        }, 2500);
-      } else {
-        mensagem.innerHTML = `<div class="alert alert-warning">Resposta incorreta. Tentativa ${tentativas} de 3.</div>`;
-        respostaInput.value = "";
-        respostaInput.focus();
-      }
-    }
-  });
+    const perguntaEscolhida = perguntas[Math.floor(Math.random() * perguntas.length)];
+    perguntaEl.textContent = perguntaEscolhida.texto;
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const resposta = respostaInput.value.trim();
+        if (!resposta) {
+            mensagem.innerHTML = `<div class="alert alert-danger">Preencha a resposta.</div>`;
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("user_id", user_id);
+        formData.append("login", login);
+        formData.append("resposta", resposta);
+        formData.append("pergunta", perguntaEscolhida.chave);
+
+        fetch("backend/2FA.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(r => r.json())
+        .then(data => {
+
+            if (data.status === "ok") {
+                mensagem.innerHTML = `<div class="alert alert-success">${data.msg}</div>`;
+                setTimeout(() => {
+                    window.location.href = "home-logado.html";
+                }, 1500);
+            }
+
+            else if (data.status === "erro") {
+                tentativas++;
+
+                if (tentativas >= 3) {
+                    mensagem.innerHTML = `<div class="alert alert-danger">3 tentativas sem sucesso! Realize login novamente.</div>`;
+                    setTimeout(() => {
+                        localStorage.clear();
+                        window.location.href = "login.html";
+                    }, 2500);
+                } else {
+                    mensagem.innerHTML = `<div class="alert alert-warning">${data.msg}</div>`;
+                    respostaInput.value = "";
+                    respostaInput.focus();
+                }
+            }
+        })
+        .catch(err => {
+            mensagem.innerHTML = `<div class="alert alert-danger">Erro de conexão.</div>`;
+            console.error(err);
+        });
+    });
 });

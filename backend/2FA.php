@@ -1,54 +1,70 @@
 <?php
-include("conexao.php");
+header('Content-Type: application/json');
 
-// Mapeamento de perguntas para colunas no banco
-$mapa_hash_db = [
-    'mae' => 'nome_materno',
-    'cep' => 'cep',
-    'nascimento' => 'nascimento'
-];
+include "conexao.php";
 
-// Sanitize e valide entradas (assumindo que vêm de $_POST ou similar)
-$pergunta_id = isset($_POST['pergunta_id']) ? trim($_POST['pergunta_id']) : '';
-$resposta_digitada = isset($_POST['resposta_digitada']) ? trim($_POST['resposta_digitada']) : '';
-$user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 0;  // Exemplo: assumindo sessão; ajuste conforme necessário
-
-// Verifica se os dados necessários foram recebidos e se o ID é válido
-if (empty($pergunta_id) || empty($resposta_digitada) || $user_id <= 0 || !array_key_exists($pergunta_id, $mapa_hash_db)) {
-    die("Erro: Dados de segurança incompletos ou ID de pergunta inválido.");
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(["status" => "erro", "msg" => "Método inválido"]);
+    exit();
 }
 
-$coluna_hash = $mapa_hash_db[$pergunta_id];
+$user_id  = $_POST["user_id"] ?? 0;
+$login    = $_POST["login"] ?? '';
+$resposta = trim($_POST["resposta"] ?? '');
+$pergunta = $_POST["pergunta"] ?? '';
+
+if ($user_id <= 0 || empty($login)) {
+    echo json_encode(["status" => "erro", "msg" => "Usuário inválido"]);
+    exit();
+}
+
+if (empty($resposta)) {
+    echo json_encode(["status" => "erro", "msg" => "Digite a resposta"]);
+    exit();
+}
 
 try {
-    // Use placeholders para tudo, incluindo a coluna (mais seguro)
-    $sql = "SELECT :coluna AS hash FROM usuarios WHERE id = :id";
-    
+
+    $sql = "SELECT nome_materno, data_nascimento, cep
+            FROM usuarios
+            WHERE id_usuario = :id AND login = :login
+            LIMIT 1";
+
     $stmt = $conexao->prepare($sql);
-    $stmt->execute(['coluna' => $coluna_hash, 'id' => $user_id]);
-    $user_hashes = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->bindParam(":id", $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(":login", $login, PDO::PARAM_STR);
+    $stmt->execute();
 
-    if (!$user_hashes) {
-        die("Erro interno. Não foi possível carregar os dados de segurança do usuário.");
+    if ($stmt->rowCount() === 0) {
+        echo json_encode(["status" => "erro", "msg" => "Usuário não encontrado"]);
+        exit();
     }
 
-    $hash_do_banco = $user_hashes['hash'];
-    if (empty($hash_do_banco)) {
-        die("Erro: Dados de segurança não configurados para esta pergunta.");
+    $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $resposta_correta = "";
+
+    if ($pergunta === "mae") {
+        $resposta_correta = $dados["nome_materno"];
+    } elseif ($pergunta === "nascimento") {
+        $resposta_correta = $dados["data_nascimento"];
+    } elseif ($pergunta === "cep") {
+        $resposta_correta = $dados["cep"];
+    } else {
+        echo json_encode(["status" => "erro", "msg" => "Pergunta inválida"]);
+        exit();
     }
 
-    if (password_verify($resposta_digitada, $hash_do_banco)) {
-        // Em produção, use redirecionamento em vez de echo
-        header('Location: acesso_concedido.php');
+    if (strtolower(trim($resposta)) === strtolower(trim($resposta_correta))) {
+        echo json_encode(["status" => "ok", "msg" => "2FA aprovado!"]);
         exit();
     } else {
-        // Log tentativa falhada para auditoria
-        error_log("Tentativa 2FA falhada para user_id: $user_id, pergunta: $pergunta_id");
-        echo "Resposta de segurança incorreta. Tente novamente.";
+        echo json_encode(["status" => "erro", "msg" => "Resposta incorreta"]);
+        exit();
     }
+
 } catch (PDOException $e) {
-    // Log erro sem expor detalhes
-    error_log("Erro de banco em 2FA: " . $e->getMessage());
-    die("Erro interno. Tente novamente mais tarde.");
+    echo json_encode(["status" => "erro", "msg" => "Erro no servidor"]);
+    exit();
 }
 ?>

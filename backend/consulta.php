@@ -1,58 +1,46 @@
-php
 <?php
-header("Content-Type: application/json");
+include "conexao.php";
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "seu_banco";
+$busca = "";
+$temBusca = false;
 
-try {
-    $conn = new mysqli($host, $user, $pass, $db);
-    
-    if ($conn->connect_error) {
-        throw new Exception("Erro ao conectar: " . $conn->connect_error);
-    }
-
-    // Valida e sanitiza a pesquisa
-    $pesquisa = isset($_GET['q']) ? trim($_GET['q']) : "";
-    
-    $sql = "SELECT id, nome, email FROM usuarios";
-    $params = [];
-    $types = "";
-
-    if ($pesquisa !== "") {
-        // Previne SQL Injection usando prepared statements
-        $sql .= " WHERE nome LIKE ? OR email LIKE ?";
-        $termo_pesquisa = "%" . $pesquisa . "%";
-        $params = [$termo_pesquisa, $termo_pesquisa];
-        $types = "ss";
-    }
-
-    $stmt = $conn->prepare($sql);
-    
-    if ($params) {
-        $stmt->bind_param($types, ...$params);
-    }
-    
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $usuarios = [];
-    if ($result && $result->num_rows > 0) {
-        while ($linha = $result->fetch_assoc()) {
-            $usuarios[] = $linha;
-        }
-    }
-
-    echo json_encode($usuarios);
-    $stmt->close();
-    
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(["error" => "Erro interno do servidor"]);
-} finally {
-    if (isset($conn)) {
-        $conn->close();
-    }
+// verifica se o parâmetro existe e não está vazio
+if (isset($_GET['busca']) && trim($_GET['busca']) !== "") {
+    $busca = trim($_GET['busca']);
+    $temBusca = true;
 }
+
+$sql = "SELECT 
+            u.id_usuario AS id,
+            u.nome_completo,
+            u.email,
+            p.nome_perfil
+        FROM usuarios u
+        INNER JOIN perfis p ON u.perfil_id = p.id_perfil";
+
+if ($temBusca) {
+    $sql .= " WHERE 
+                u.nome_completo LIKE :b
+                OR u.email LIKE :b
+                OR u.login LIKE :b";
+}
+
+$stmt = $conexao->prepare($sql);
+
+if ($temBusca) {
+    $stmt->bindValue(":b", "%$busca%");
+}
+
+$stmt->execute();
+$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// saída para o HTML
+foreach ($usuarios as $u) {
+    echo "<tr>";
+    echo "<td>{$u['id']}</td>";
+    echo "<td>{$u['nome_completo']}</td>";
+    echo "<td>{$u['email']}</td>";
+    echo "<td>{$u['nome_perfil']}</td>";
+    echo "</tr>";
+}
+?>

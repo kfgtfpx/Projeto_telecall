@@ -26,7 +26,6 @@
   --color-neutral-4: #504f4f;
   --color-neutral-5: #6c6c6c;
 
-
   --fs-xs: clamp(13px, 1.5vw, 15px);
   --fs-sm: clamp(14px, 1.6vw, 16px);
   --fs-md: clamp(16px, 1.8vw, 18px);
@@ -81,9 +80,6 @@ body.font-large {
   --fs-xxl: clamp(44px, 5.5vw, 60px);
 }
 
-
-
-
 /* Reset e fontes */
 * {
   margin: 0;
@@ -131,8 +127,6 @@ body {
   }
 }
 
-
-
 .right-panel {
   position: relative;
   flex: 1;
@@ -148,13 +142,13 @@ body {
 .logo {
   height: 40px;
   width: auto;
-  display:flex;
+  display: flex;
   align-self: center;
   padding-top: 15px;
 }
 
 .btns-header {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   padding: 10px;
   width: 100%;
@@ -169,14 +163,14 @@ body {
   width: 100px;
 }
 
-.login-button a{
+.login-button a {
   color: #c31d2e;
   text-decoration: none;
   font-size: var(--fs-sm);
   transition: ease 0.3s;
 }
 
-.login-button svg{
+.login-button svg {
   padding-left: 5px;
   font-weight: 500;
   rotate: 180deg;
@@ -199,8 +193,8 @@ body {
 
 .login-button button:hover {
   font-weight: 700;
- background-color: var(--color-primary-5);
- transition: ease 0.3s;
+  background-color: var(--color-primary-5);
+  transition: ease 0.3s;
 }
 
 .ui-tools {
