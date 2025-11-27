@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const btnConsulta = document.createElement("li");
             btnConsulta.innerHTML = `
-                <a class="dropdown-item" href="consulta_usuario.html">
+                <a class="dropdown-item" href="consulta_usuarios.html">
                     Consultar Usuários
                 </a>
             `;

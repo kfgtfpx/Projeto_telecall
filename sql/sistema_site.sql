@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26/11/2025 às 22:42
+-- Tempo de geração: 27/11/2025 às 07:21
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -50,6 +50,13 @@ CREATE TABLE `autenticacao_2fa` (
   `data_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Despejando dados para a tabela `autenticacao_2fa`
+--
+
+INSERT INTO `autenticacao_2fa` (`id_2fa`, `usuario_id`, `pergunta`, `resposta_correta`, `tentativas`, `data_registro`) VALUES
+(3, 32, 'data_nascimento', '1990-01-01', 0, '2025-11-27 05:41:47');
+
 -- --------------------------------------------------------
 
 --
@@ -65,6 +72,16 @@ CREATE TABLE `logs_autenticacao` (
   `navegador` text DEFAULT NULL,
   `data_hora` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `logs_autenticacao`
+--
+
+INSERT INTO `logs_autenticacao` (`id_log`, `usuario_id`, `tipo`, `segundo_fator`, `ip`, `navegador`, `data_hora`) VALUES
+(1, 32, 'login_sucesso', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-27 05:53:58'),
+(2, 32, '2fa_sucesso', 'data_nascimento', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-27 05:54:04'),
+(3, 32, 'login_sucesso', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-27 05:59:10'),
+(4, 32, '2fa_sucesso', 'data_nascimento', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', '2025-11-27 05:59:15');
 
 -- --------------------------------------------------------
 
@@ -141,8 +158,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `perfil_id`, `nome_completo`, `data_nascimento`, `sexo`, `nome_materno`, `cpf`, `email`, `telefone`, `cep`, `endereco`, `login`, `senha`, `criado_em`, `atualizado_em`) VALUES
-(29, 2, 'Renan Oliveira', '1111-11-11', 'F', 'SHIRLEI OTAVIANO DE OLIVEIRA', '11111111111', 'aaaaaaaaaa@gmail.com', '2121321312', '', 'Rua Vera, Cordovil, Rio de Janeiro, RJ', 'cccccc', '$2y$10$VCA60PIQt46leWOkGs9hCOHtoc9NDZVifkbD0ae/WzyYbYhoH.UmW', '2025-11-26 15:53:05', '2025-11-26 21:39:08'),
-(30, 1, 'Administrador Master', '1990-01-01', 'M', 'Nome da Mãe', '00000000000', 'admin@site.com', '21999999999', '00000000', 'Endereço do Admin', 'master', '$2b$12$7782zAjsOgA67aPwWAhQk.eMLlmAQbMw7t3GX4oxmLVSfakHonOqG', '2025-11-26 17:20:07', '2025-11-26 17:20:07');
+(32, 1, 'Administrador Master', '1990-01-01', 'M', 'Maria Silva', '12345678909', 'master@telecall.com', '21999999999', '20000000', 'Av. Presidente Vargas, 1000 - Centro, Rio de Janeiro - RJ', 'master', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2025-11-27 05:39:11', '2025-11-27 05:39:11');
 
 --
 -- Índices para tabelas despejadas
@@ -213,13 +229,13 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT de tabela `autenticacao_2fa`
 --
 ALTER TABLE `autenticacao_2fa`
-  MODIFY `id_2fa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_2fa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `logs_autenticacao`
 --
 ALTER TABLE `logs_autenticacao`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `perfis`
@@ -243,7 +259,7 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restrições para tabelas despejadas
