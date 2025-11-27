@@ -6,6 +6,16 @@
 console.log("ALTERAR_SENHA.JS CARREGOU!");
 
 /* ========================================
+   Função para verificar se usuário está logado
+   ======================================== */
+
+function usuarioEstaLogado() {
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const userId = localStorage.getItem("user_id");
+    return !!(usuarioLogado && userId); // Retorna true se ambos existirem
+}
+
+/* ========================================
    Scroll Animation
    ======================================== */
 
@@ -154,11 +164,60 @@ function showToast(message, type = 'error') {
 }
 
 /* ========================================
+   Configuração dos Botões de Navegação
+   ======================================== */
+
+function configurarBotoesNavegacao() {
+    // Botão "Voltar" do header (seta)
+    const botaoVoltarHeader = document.querySelector('.login-button a');
+    if (botaoVoltarHeader) {
+        botaoVoltarHeader.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (usuarioEstaLogado()) {
+                window.location.href = "home-logado.html";
+            } else {
+                window.location.href = "home.html";
+            }
+        });
+    }
+
+    // Botão "Voltar para Home" principal
+    const voltarBtn = document.getElementById("voltar-home");
+    if (voltarBtn) {
+        voltarBtn.addEventListener("click", function() {
+            if (usuarioEstaLogado()) {
+                window.location.href = "home-logado.html";
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        // Atualiza o texto do botão conforme o estado de login
+        if (usuarioEstaLogado()) {
+            voltarBtn.textContent = "Voltar para Home";
+        } else {
+            voltarBtn.textContent = "Fazer Login";
+        }
+    }
+
+    // Log para debug
+    console.log("Usuário logado:", usuarioEstaLogado());
+    console.log("Dados localStorage:", {
+        usuarioLogado: localStorage.getItem("usuarioLogado"),
+        user_id: localStorage.getItem("user_id"),
+        perfil_id: localStorage.getItem("perfil_id")
+    });
+}
+
+/* ========================================
    Alteração de Senha
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM carregado");
+
+    // Configura primeiro os botões de navegação
+    configurarBotoesNavegacao();
 
     // FORMULARIO DE ALTERAR SENHA
     const form = document.getElementById("form-alterar-senha");
@@ -171,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const senha_atual = document.getElementById("senha_atual").value;
             const nova_senha = document.getElementById("nova_senha").value;
             const confirmar_senha = document.getElementById("confirmar_senha").value;
-            const msg = document.getElementById("msg");
 
             // Validações básicas
             if (!login) {
@@ -238,6 +296,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     form.reset();
                     
                     setTimeout(() => {
+                        // Limpa o localStorage e redireciona para login
+                        localStorage.removeItem("usuarioLogado");
+                        localStorage.removeItem("user_id");
+                        localStorage.removeItem("perfil_id");
                         window.location.href = "login.html";
                     }, 2000);
                 } else {
@@ -251,14 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 btnSubmit.textContent = originalText;
                 btnSubmit.disabled = false;
             }
-        });
-    }
-
-    // BOTÃO VOLTAR
-    const voltarBtn = document.getElementById("voltar-home");
-    if (voltarBtn) {
-        voltarBtn.addEventListener("click", function() {
-            window.location.href = "home-logado.html";
         });
     }
 });

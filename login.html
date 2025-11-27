@@ -1,12 +1,3 @@
-<!-- =====================================================================
-                              Autor original: Renan
-                             Modificações por: Pamela
-  ! Modificações (Pamela)
-    - Reestruturação pequena HTML para melhor organização e semântica.
-    - Adição dos botões de acessibilidade
-    
-   ===================================================================== -->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -26,6 +17,70 @@
     <link rel="stylesheet" href="styles/login.css" />
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      /* ESTILOS PARA OS BOTÕES */
+      .form-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-submit {
+        font-family: "LibreFranklin", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 24px;
+        background-color: #ce2536;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        min-width: 140px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-submit:hover {
+        background-color: #930f1d;
+        transform: translateY(-2px);
+      }
+
+      .btn-clear {
+        font-family: "LibreFranklin", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 24px;
+        background-color: #3656b6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        min-width: 140px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-clear:hover {
+        background-color: #1941b7;
+        transform: translateY(-2px);
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .form-buttons {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+
+        .btn-submit,
+        .btn-clear {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="left-panel"></div>
@@ -127,6 +182,7 @@
               id="login"
               name="login"
               maxlength="6"
+              placeholder="Digite seu login"
               required
             />
           </div>
@@ -140,10 +196,11 @@
                 id="password"
                 name="senha"
                 maxlength="8"
+                placeholder="Digite sua senha"
                 required
               />
               <img
-                src="assets/icons/Olho aberto.svg"
+                src="assets/icons/Olho fechado.svg"
                 id="togglePassword"
                 class="toggle-password position-absolute"
                 alt="Mostrar senha"
@@ -152,9 +209,13 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-danger w-100 rounded-3">
-            Entrar
-          </button>
+          <!-- Botões atualizados -->
+          <div class="form-buttons">
+            <button type="submit" class="btn-submit">Entrar</button>
+            <button type="button" class="btn-clear" id="clearForm">
+              Limpar
+            </button>
+          </div>
 
           <div class="text-center mt-4">
             <p class="mb-0">
@@ -162,6 +223,7 @@
               <a href="cadastro.html" class="link">Crie uma conta agora!</a>
               <a href="alterar_senha.html" class="link d-block mt-2"
                 >Esqueceu a sua senha?</a
+              >
             </p>
           </div>
         </form>
@@ -169,6 +231,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="js/login1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
